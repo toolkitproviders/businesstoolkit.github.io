@@ -2,7 +2,7 @@
   "name": "businesstoolkit",
   "version": "1.0.0",
   "private": true,
-  "description": "BusinessToolKit \u2014 free online business tools in one platform.",
+  "description": "BusinessToolKit — free online business tools in one platform.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -23,7 +23,7 @@
     "jsbarcode": "3.12.1",
     "jszip": "3.10.1",
     "lucide-react": "0.544.0",
-    "next": "15.5.4",
+    "next": "15.5.9",
     "pdf-lib": "1.17.1",
     "pdfjs-dist": "4.8.69",
     "prettier": "^3.4.2",
