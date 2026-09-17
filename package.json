@@ -1,0 +1,46 @@
+{
+  "name": "businesstoolkit",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BusinessToolKit \u2014 free online business tools in one platform.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import ./tests/resolver.mjs tests/logic.test.mjs && node --import ./tests/resolver.mjs tests/text.test.mjs && node --import ./tests/resolver.mjs tests/design.test.mjs && node --import ./tests/resolver.mjs tests/files.test.mjs && node --import ./tests/resolver.mjs tests/dates.test.mjs && node --import ./tests/resolver.mjs tests/pdf.test.mjs",
+    "test:logic": "node --import ./tests/resolver.mjs tests/logic.test.mjs",
+    "test:pdf": "node --import ./tests/resolver.mjs tests/pdf.test.mjs",
+    "test:text": "node --import ./tests/resolver.mjs tests/text.test.mjs",
+    "test:design": "node --import ./tests/resolver.mjs tests/design.test.mjs",
+    "test:files": "node --import ./tests/resolver.mjs tests/files.test.mjs",
+    "test:dates": "node --import ./tests/resolver.mjs tests/dates.test.mjs"
+  },
+  "dependencies": {
+    "@pdf-lib/fontkit": "1.1.1",
+    "clsx": "2.1.1",
+    "jsbarcode": "3.12.1",
+    "jszip": "3.10.1",
+    "lucide-react": "0.544.0",
+    "next": "15.5.4",
+    "pdf-lib": "1.17.1",
+    "pdfjs-dist": "4.8.69",
+    "prettier": "^3.4.2",
+    "qrcode": "1.5.4",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "server-only": "^0.0.1",
+    "tailwind-merge": "3.3.1",
+    "terser": "^5.37.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.1.13",
+    "@types/node": "22.15.3",
+    "@types/qrcode": "1.5.5",
+    "@types/react": "19.1.9",
+    "@types/react-dom": "19.1.7",
+    "tailwindcss": "4.1.13",
+    "typescript": "5.9.2"
+  }
+}

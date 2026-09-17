@@ -1,0 +1,225 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   BusinessToolKit design system
+   Light mode is the default. Dark mode is opt-in via [data-theme="dark"] on
+   <html>, set before paint by the inline script in app/layout.tsx.
+   ========================================================================== */
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Brand — deep navy primary, teal accent */
+  --color-navy-50: #f2f6fc;
+  --color-navy-100: #e2ebf7;
+  --color-navy-200: #c6d8f0;
+  --color-navy-300: #9bbbe4;
+  --color-navy-400: #6996d4;
+  --color-navy-500: #4675c1;
+  --color-navy-600: #345aa5;
+  --color-navy-700: #2c4886;
+  --color-navy-800: #283e6f;
+  --color-navy-900: #11224a;
+  --color-navy-950: #0a1631;
+
+  --color-teal-50: #eefbfa;
+  --color-teal-100: #d3f5f3;
+  --color-teal-200: #ace9e8;
+  --color-teal-300: #74d8d7;
+  --color-teal-400: #3cbec0;
+  --color-teal-500: #20a2a6;
+  --color-teal-600: #18818a;
+  --color-teal-700: #186770;
+  --color-teal-800: #19545c;
+  --color-teal-900: #19464d;
+
+  --radius-card: 0.875rem;
+
+  --shadow-card: 0 1px 2px 0 rgb(16 24 40 / 0.04), 0 1px 3px 0 rgb(16 24 40 / 0.06);
+  --shadow-lift: 0 10px 24px -8px rgb(16 24 40 / 0.14), 0 2px 6px -2px rgb(16 24 40 / 0.06);
+  --shadow-pop: 0 20px 48px -16px rgb(10 22 49 / 0.26);
+
+  --animate-fade-up: fade-up 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade-in: fade-in 0.25s ease-out both;
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+/* --- Semantic tokens ------------------------------------------------------ */
+:root {
+  --bg: #ffffff;
+  --bg-subtle: #f7f9fc;
+  --bg-muted: #eef2f7;
+  --surface: #ffffff;
+  --surface-raised: #ffffff;
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --fg: #0f172a;
+  --fg-muted: #51607a;
+  --fg-subtle: #74839c;
+  --primary: #11224a;
+  --primary-fg: #ffffff;
+  --primary-hover: #1b3268;
+  --accent: #18818a;
+  --accent-soft: #eefbfa;
+  --accent-fg: #ffffff;
+  --success: #15803d;
+  --success-soft: #f0fdf4;
+  --warning: #b45309;
+  --warning-soft: #fffbeb;
+  --error: #b91c1c;
+  --error-soft: #fef2f2;
+  --ring: #3cbec0;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #080f1f;
+  --bg-subtle: #0c1527;
+  --bg-muted: #141f36;
+  --surface: #0f1a30;
+  --surface-raised: #152238;
+  --border: #21304d;
+  --border-strong: #32436a;
+  --fg: #eef2f9;
+  --fg-muted: #a5b2cb;
+  --fg-subtle: #7e8da9;
+  --primary: #4a7dd4;
+  --primary-fg: #06101f;
+  --primary-hover: #6593e2;
+  --accent: #3cbec0;
+  --accent-soft: #102b30;
+  --accent-fg: #06101f;
+  --success: #4ade80;
+  --success-soft: #0d2418;
+  --warning: #fbbf24;
+  --warning-soft: #2a1f08;
+  --error: #f87171;
+  --error-soft: #2b1214;
+  --ring: #3cbec0;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-subtle: var(--bg-subtle);
+  --color-bg-muted: var(--bg-muted);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-primary: var(--primary);
+  --color-primary-fg: var(--primary-fg);
+  --color-primary-hover: var(--primary-hover);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-fg: var(--accent-fg);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-error: var(--error);
+  --color-error-soft: var(--error-soft);
+  --color-ring: var(--ring);
+}
+
+@layer base {
+  * { border-color: var(--border); }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Visible, consistent focus for keyboard users across every control. */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  h1, h2, h3, h4 { text-wrap: balance; letter-spacing: -0.018em; }
+  p { text-wrap: pretty; }
+
+  [hidden] { display: none !important; }
+
+  ::selection { background: var(--accent); color: var(--accent-fg); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  .container-page {
+    width: 100%;
+    margin-inline: auto;
+    max-width: 80rem;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 640px) { .container-page { padding-inline: 1.5rem; } }
+  @media (min-width: 1024px) { .container-page { padding-inline: 2rem; } }
+
+  /* Screen-reader-only text that becomes visible on focus (skip links). */
+  .sr-only-focusable:not(:focus):not(:focus-within) {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .tabular { font-variant-numeric: tabular-nums; }
+
+  .grid-hero {
+    background-image:
+      linear-gradient(to right, color-mix(in srgb, var(--border) 60%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in srgb, var(--border) 60%, transparent) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 100%);
+  }
+
+  /* Scrollbars inside tool panels */
+  .thin-scroll::-webkit-scrollbar { width: 10px; height: 10px; }
+  .thin-scroll::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: 9999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+}
+
+/* Print: strip chrome so invoices/quotes print clean. */
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff !important; color: #000 !important; }
+  .print-area { box-shadow: none !important; border: 0 !important; margin: 0 !important; padding: 0 !important; }
+  @page { margin: 12mm; }
+}
