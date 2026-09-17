@@ -1,6 +1,6 @@
 # BusinessToolKit
 
-18 free online business tools in one Next.js application — invoices, quotations,
+153 free online business tools in one Next.js application — invoices, quotations,
 PDF manipulation, image processing, and generators for QR codes, barcodes,
 passwords, business names and email signatures.
 
