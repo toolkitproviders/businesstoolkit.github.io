@@ -8,7 +8,6 @@ import { JsonLd } from "@/components/json-ld";
 import { organizationSchema, websiteSchema } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 
-// `display: swap` + a preloaded subset keeps first paint fast and avoids FOIT.
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
