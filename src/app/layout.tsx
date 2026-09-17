@@ -69,6 +69,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* Applied before first paint so dark-mode users never see a flash. */}
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        {/* Google AdSense: site-level tag. Ad units are placed separately. */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7311622363594443"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className="flex min-h-dvh flex-col">
         <JsonLd data={[organizationSchema(), websiteSchema()]} />
